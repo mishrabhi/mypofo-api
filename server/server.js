@@ -7,6 +7,8 @@ const middleware = require("./util/middlewares/appmiddleware");
 const app = express();
 
 app.use(middleware.logger);
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
 
 mongoose
   .connect(config.mongoDB_URI)
