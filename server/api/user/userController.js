@@ -30,4 +30,18 @@ exports.createUser = (req, res, next) => {
     });
 };
 
-exports.getSingleUser = (req, res, next) => {};
+exports.getUserByEmail = (req, res, next) => {
+  let email = req.params.email;
+  userService
+    .getUserByEmail(email)
+    .then((data) => {
+      if (data) {
+        res.status(200).json({ message: "Ok", data });
+      } else {
+        res.status(400).json({ message: `User with email ${email} not found` });
+      }
+    })
+    .catch((err) => {
+      next(err);
+    });
+};

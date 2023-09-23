@@ -13,3 +13,15 @@ exports.createUser = (data) => {
       });
   });
 };
+
+exports.getUserByEmail = (email) => {
+  return new Promise((resolve, reject) => {
+    User.findOne({ email: email })
+      .then((data) => {
+        resolve(data);
+      })
+      .catch((err) => {
+        reject(err);
+      });
+  });
+};
