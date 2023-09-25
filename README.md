@@ -1,6 +1,6 @@
 # MYPOFO API
 
-This api developed to serve data public and private endpoints to my portfolio websites.
+This api developed to serve data to public and private endpoints in my portfolio websites.
 
 ## Languages & Framework
 
