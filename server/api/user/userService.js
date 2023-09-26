@@ -1,8 +1,11 @@
 const User = require("./userModal");
+const { v4: uuidv4 } = require("uuid");
 
 exports.createUser = (data) => {
   return new Promise((resolve, reject) => {
+    data.apiKey = uuidv4();
     let newUser = new User(data);
+    console.log("dt", newUser);
     newUser
       .save()
       .then((dt) => {

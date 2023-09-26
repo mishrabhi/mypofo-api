@@ -1,4 +1,3 @@
-const { v4: uuidv4 } = require("uuid");
 const userService = require("./userService");
 
 exports.createUser = (req, res, next) => {

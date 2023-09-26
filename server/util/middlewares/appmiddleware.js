@@ -9,5 +9,9 @@ exports.notFound = (req, res, next) => {
 
 exports.handleError = (err, req, res, next) => {
   console.log(err);
-  res.status(500).json({ message: "Something went wrong, please try later" });
+  if (err.message === "Unauthorized") {
+    res.status(401).json({ message: "Unauthorized Request" });
+  } else {
+    res.status(500).json({ message: "Something went wrong, please try later" });
+  }
 };
