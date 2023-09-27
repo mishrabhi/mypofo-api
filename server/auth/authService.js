@@ -39,6 +39,7 @@ module.exports.signToken = function (id) {
 };
 
 module.exports.authenticate = function (req, res, next) {
+  console.log(req.headers);
   if (
     req.headers.authorization &&
     req.headers.authorization.split(" ")[0] == "Bearer"
@@ -54,9 +55,10 @@ module.exports.authenticate = function (req, res, next) {
   } else if (
     (req.headers["x-access-apikey"] && req.method == "GET") ||
     (req.headers["x-access-apikey"] &&
-      req.url == "/api/contacts" &&
+      req.url == "/contacts" &&
       req.method == "POST")
   ) {
+    console.log("Inside");
     User.findOne({ apiKey: req.headers["x-access-apikey"] })
       .then((dt) => {
         req.user = dt._id;

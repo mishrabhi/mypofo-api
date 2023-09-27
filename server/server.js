@@ -1,5 +1,6 @@
 const express = require("express");
 const mongoose = require("mongoose");
+const cors = require("cors");
 const config = require("./config/config");
 const blogRoute = require("./api/blogs/blogRoute");
 const middleware = require("./util/middlewares/appmiddleware");
@@ -7,6 +8,7 @@ const authenticate = require("./auth/authService").authenticate;
 
 const app = express();
 
+app.use(cors());
 app.use(middleware.logger);
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
